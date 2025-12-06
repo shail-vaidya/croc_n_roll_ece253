@@ -10,9 +10,9 @@ import pandas as pd
 
 # ================= CONFIGURATION =================
 # Paths
-DISTORTED_SOURCE = "./Distorted_Images/Low_Light"
+DISTORTED_SOURCE = "../Distorted_Images/Low_Light"
 TEMP_PROC_DIR    = "./Temp_Ablation_Manual"
-MODEL_PATH       = "resnet50_clean_baseline.pth"
+MODEL_PATH       = "../resnet50_clean_baseline.pth"
 
 # Hyperparameters to Test
 # 1. Tile Sizes (in Pixels). Image is roughly 224x224.

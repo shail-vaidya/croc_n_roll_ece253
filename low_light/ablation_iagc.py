@@ -10,9 +10,9 @@ import pandas as pd
 
 # ================= CONFIGURATION =================
 # Paths
-DISTORTED_SOURCE = "./Distorted_Images/Low_Light"
+DISTORTED_SOURCE = "../Distorted_Images/Low_Light"
 TEMP_PROC_DIR    = "./Temp_Ablation_Images_IAGC"
-MODEL_PATH       = "resnet50_clean_baseline.pth"
+MODEL_PATH       = "../resnet50_clean_baseline.pth"
 
 # Hyperparameters to Test
 # 1. Weighting Factor: Controls how "strong" the brightening is.

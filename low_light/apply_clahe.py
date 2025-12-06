@@ -4,8 +4,8 @@ import os
 from tqdm import tqdm
 
 # ================= CONFIGURATION =================
-SOURCE_ROOT = "./Distorted_Images/Low_Light"
-DEST_ROOT = "./Processed_Images/Low_Light/CLAHE"
+SOURCE_ROOT = "../Distorted_Images/Low_Light"
+DEST_ROOT = "../Processed_Images/Low_Light/CLAHE"
 
 # CLAHE Parameters (Variables for your future Ablation Study [cite: 102])
 # Clip Limit: Threshold for contrast limiting. Higher = more contrast but more noise.

@@ -10,9 +10,9 @@ import pandas as pd
 
 # ================= CONFIGURATION =================
 # Paths
-DISTORTED_SOURCE = "./Distorted_Images/Low_Light"
+DISTORTED_SOURCE = "../Distorted_Images/Low_Light"
 TEMP_PROC_DIR    = "./Temp_Ablation_Images" # Temporary folder for processing
-MODEL_PATH       = "resnet50_clean_baseline.pth"
+MODEL_PATH       = "../resnet50_clean_baseline.pth"
 
 # Grid Search Parameters (As defined in Proposal)
 # Clip Limit: Lower = less noise amplification. Higher = more contrast.

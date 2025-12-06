@@ -5,8 +5,8 @@ import time
 from tqdm import tqdm
 
 # ================= CONFIGURATION =================
-SOURCE_ROOT = "./Distorted_Images/Low_Light"
-DEST_ROOT   = "./Processed_Images/Low_Light/IAGC_LAB"
+SOURCE_ROOT = "../Distorted_Images/Low_Light"
+DEST_ROOT   = "../Processed_Images/Low_Light/IAGC_LAB"
 # =================================================
 
 # --- YOUR IMPLEMENTATION (From iagc_lab.py) ---

@@ -9,9 +9,9 @@ import shutil
 import pandas as pd
 
 # ================= CONFIGURATION =================
-DISTORTED_SOURCE = "./Distorted_Images/Low_Light"
+DISTORTED_SOURCE = "../Distorted_Images/Low_Light"
 TEMP_PROC_DIR    = "./Temp_Ablation_IAGC_LAB"
-MODEL_PATH       = "resnet50_clean_baseline.pth"
+MODEL_PATH       = "../resnet50_clean_baseline.pth"
 
 # Parameter to Tune: Sensitivity Factor (k)
 # Low k (0.5) = Gamma stays close to 1.0 (minimal change)

@@ -4,8 +4,8 @@ import os
 from tqdm import tqdm
 
 # ================= CONFIGURATION =================
-SOURCE_ROOT = "./ImageNet_images"
-DEST_ROOT = "./Distorted_Images/Low_Light"
+SOURCE_ROOT = "../ImageNet_images"
+DEST_ROOT = "../Distorted_Images/Low_Light"
 
 # 1. Low Light Parameters
 GAMMA = 4.0        # Increased from 3.5 to 4.0 for darker images

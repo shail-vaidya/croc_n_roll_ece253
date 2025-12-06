@@ -5,8 +5,8 @@ import time
 from tqdm import tqdm
 
 # ================= CONFIGURATION =================
-SOURCE_ROOT = "./Distorted_Images/Low_Light"
-DEST_ROOT   = "./Processed_Images/Low_Light/Manual_CLAHE"
+SOURCE_ROOT = "../Distorted_Images/Low_Light"
+DEST_ROOT   = "../Processed_Images/Low_Light/Manual_CLAHE"
 
 # Manual CLAHE Parameters
 # Note: In your manual code, clip_limit is absolute pixels (e.g., 40), 

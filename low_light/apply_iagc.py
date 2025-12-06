@@ -4,8 +4,8 @@ import os
 from tqdm import tqdm
 
 # ================= CONFIGURATION =================
-SOURCE_ROOT = "./Distorted_Images/Low_Light"
-DEST_ROOT = "./Processed_Images/Low_Light/IAGC"
+SOURCE_ROOT = "../Distorted_Images/Low_Light"
+DEST_ROOT = "../Processed_Images/Low_Light/IAGC"
 # =================================================
 
 def apply_iagc_enhancement(image):
