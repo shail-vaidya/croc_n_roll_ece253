@@ -9,7 +9,7 @@ MASK_SOURCE = "../Distorted_Images/Water_Masks"
 DEST_ROOT   = "../Processed_Images/Water/Exemplar_NS"
 
 # Parameters
-INPAINT_RADIUS = 3
+INPAINT_RADIUS = 9 # Based on Ablation results
 METHOD = cv2.INPAINT_NS # Navier-Stokes (Structure/Fluid based)
 # =================================================
 

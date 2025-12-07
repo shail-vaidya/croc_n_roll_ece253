@@ -9,7 +9,7 @@ MASK_SOURCE = "../Distorted_Images/Water_Masks"
 DEST_ROOT   = "../Processed_Images/Water/Diffusion_Telea"
 
 # Parameters
-INPAINT_RADIUS = 3
+INPAINT_RADIUS = 5 # Based on Ablation results
 METHOD = cv2.INPAINT_TELEA # Diffusion-based
 # =================================================
 
