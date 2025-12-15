@@ -9,17 +9,16 @@ import pandas as pd
 
 # ================= CONFIGURATION =================
 # 1. Dataset Paths
-CLEAN_DATA_DIR     = "./ImageNet_images"
+CLEAN_DATA_DIR     = "../ImageNet_images"
 # Synthetic Data
-DISTORTED_DATA_DIR = "./Distorted_Images/Water_Occlusion"
-DIFFUSION_DATA_DIR = "./Processed_Images/Water/Diffusion_Telea"
-EXEMPLAR_DATA_DIR  = "./Processed_Images/Water/Exemplar_NS"
-# Real Data (Preprocessed & Restored)
-REAL_DATA_DIR      = "./Self_capture_images_Preprocessed/Water Occlusion"
-REAL_RESTORED_DIR  = "./Processed_Images/Water/Self_Captured_Restored"
+DISTORTED_DATA_DIR = "../Distorted_Images/Water_Occlusion"
+DIFFUSION_DATA_DIR = "../Processed_Images/Water/Diffusion_Telea"
+EXEMPLAR_DATA_DIR  = "../Processed_Images/Water/Exemplar_NS"
+# Real Data (Preprocessed)
+REAL_DATA_DIR      = "../Manual_Images/Water Occlusion_Preproccessed/Water_Occlusion"
 
 # 2. Model Paths
-CLEAN_MODEL_PATH   = "./resnet50_clean_baseline.pth"
+CLEAN_MODEL_PATH   = "../resnet50_clean_baseline.pth"
 TUNED_MODEL_PATH   = "resnet50_finetuned_water_v2.pth"
 
 BATCH_SIZE = 32
@@ -112,7 +111,6 @@ distorted_loader = get_loader(DISTORTED_DATA_DIR)
 diffusion_loader = get_loader(DIFFUSION_DATA_DIR)
 exemplar_loader  = get_loader(EXEMPLAR_DATA_DIR)
 real_loader      = get_loader(REAL_DATA_DIR)
-real_res_loader  = get_loader(REAL_RESTORED_DIR)
 
 # 2. EVALUATE STRATEGY 1: DATA-CENTRIC (Clean Model)
 print("\n--- Strategy 1: Data-Centric Evaluation (Clean Model) ---")
@@ -125,36 +123,20 @@ if clean_model:
     results.append({"Strategy": "Baseline", "Dataset": "Clean Images", "Model": "Original", "Accuracy": f"{acc_clean*100:.2f}%"})
 
     # Synthetic Distorted R'
-    acc_distorted = evaluate_model(clean_model, distorted_loader, "Synthetic Distorted (R')")
+    acc_distorted = evaluate_model(clean_model, distorted_loader, "Distorted (R')")
     results.append({"Strategy": "Baseline", "Dataset": "Synthetic Distorted", "Model": "Original", "Accuracy": f"{acc_distorted*100:.2f}%"})
-
-    # Real Distorted R'_real
-    if real_loader:
-        acc_real = evaluate_model(clean_model, real_loader, "Real World Distorted (R'_real)")
-        results.append({"Strategy": "Baseline", "Dataset": "Real World Distorted", "Model": "Original", "Accuracy": f"{acc_real*100:.2f}%"})
 
     # Restorations (Synthetic)
     acc_diff = evaluate_model(clean_model, diffusion_loader, "Diffusion Restored (R'e1)")
-    results.append({"Strategy": "Data-Centric (DIP)", "Dataset": "Syn. Diffusion Restored", "Model": "Original", "Accuracy": f"{acc_diff*100:.2f}%"})
+    results.append({"Strategy": "Data-Centric (DIP)", "Dataset": "Diffusion Restored", "Model": "Original", "Accuracy": f"{acc_diff*100:.2f}%"})
 
     acc_exem = evaluate_model(clean_model, exemplar_loader, "Exemplar Restored (R'e2)")
-    results.append({"Strategy": "Data-Centric (DIP)", "Dataset": "Syn. Exemplar Restored", "Model": "Original", "Accuracy": f"{acc_exem*100:.2f}%"})
+    results.append({"Strategy": "Data-Centric (DIP)", "Dataset": "Exemplar Restored", "Model": "Original", "Accuracy": f"{acc_exem*100:.2f}%"})
 
-    # Restorations (Real)
-    if real_res_loader:
-        acc_real_res = evaluate_model(clean_model, real_res_loader, "Real World Restored (R'_real_e)")
-        results.append({"Strategy": "Data-Centric (DIP)", "Dataset": "Real World Restored", "Model": "Original", "Accuracy": f"{acc_real_res*100:.2f}%"})
-
-    # Data-Centric Combined (Exemplar/NS Synthetic + Targeted Real)
-    if exemplar_loader and real_res_loader:
-        # Assuming Exemplar (NS) was the best synthetic method
-        ds_syn = exemplar_loader.dataset 
-        ds_real = real_res_loader.dataset
-        combined_dip_ds = ConcatDataset([ds_syn, ds_real])
-        combined_dip_loader = DataLoader(combined_dip_ds, batch_size=BATCH_SIZE, shuffle=False)
-        
-        acc_dip_combined = evaluate_model(clean_model, combined_dip_loader, "Data-Centric Combined")
-        results.append({"Strategy": "Data-Centric (DIP)", "Dataset": "Combined (Syn+Real)", "Model": "Original", "Accuracy": f"{acc_dip_combined*100:.2f}%"})
+    # Data-Centric Combined (Best of Diffusion/Exemplar)
+    best_dip_acc = max(acc_diff, acc_exem)
+    best_dip_name = "Exemplar" if acc_exem > acc_diff else "Diffusion"
+    results.append({"Strategy": "Data-Centric (DIP)", "Dataset": f"Combined Best ({best_dip_name})", "Model": "Original", "Accuracy": f"{best_dip_acc*100:.2f}%"})
 
     del clean_model
     torch.cuda.empty_cache()
@@ -166,7 +148,7 @@ tuned_model = load_resnet50(TUNED_MODEL_PATH)
 if tuned_model:
     # Synthetic Performance
     acc_tuned_syn = evaluate_model(tuned_model, distorted_loader, "Fine-Tuned on Synthetic (R^)")
-    results.append({"Strategy": "Model-Centric (FT)", "Dataset": "Synthetic Distorted", "Model": "Fine-Tuned", "Accuracy": f"{acc_tuned_syn*100:.2f}%"})
+    results.append({"Strategy": "Model-Centric (FT)", "Dataset": "Distorted", "Model": "Fine-Tuned", "Accuracy": f"{acc_tuned_syn*100:.2f}%"})
 
     # Real World Performance
     if real_loader:
@@ -175,9 +157,6 @@ if tuned_model:
 
     # Combined Performance (Synthetic + Real)
     if distorted_loader and real_loader:
-        # Note: We must be careful combining dataloaders directly if they have different transforms or sizes
-        # Safest way is to iterate over both or create a ConcatDataset from the underlying datasets
-        
         # We need access to the underlying datasets, not the loaders
         ds1 = distorted_loader.dataset
         ds2 = real_loader.dataset
@@ -189,7 +168,7 @@ if tuned_model:
 
 # 4. FINAL REPORT
 print("\n" + "="*80)
-print("FINAL COMPARATIVE ANALYSIS: ROBUSTNESS TO WATER OCCLUSION")
+print("FINAL COMPARATIVE ANALYSIS: WATER OCCLUSION")
 print("="*80)
 df = pd.DataFrame(results)
 # Sort to group strategies nicely

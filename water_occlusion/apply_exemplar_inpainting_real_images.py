@@ -5,7 +5,7 @@ from tqdm import tqdm
 
 # ================= CONFIGURATION =================
 # Use Preprocessed images (224x224)
-SOURCE_ROOT = "../Self_capture_images_Preprocessed/Water Occlusion"
+SOURCE_ROOT = "../Manual_Images/Water_Occlusion_Preproccessed/Water_Occlusion"
 DEST_ROOT   = "../Processed_Images/Water/Self_Captured_Restored"
 
 INPAINT_RADIUS = 9  # As requested

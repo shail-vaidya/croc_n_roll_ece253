@@ -4,8 +4,8 @@ import os
 from tqdm import tqdm
 
 # ================= CONFIGURATION =================
-SOURCE_ROOT = "../Self_capture_images/Water Occlusion"
-DEST_ROOT   = "../Self_capture_images_Preprocessed/Water Occlusion"
+SOURCE_ROOT = "../Manual_Images/Water Occlusion"
+DEST_ROOT   = "../Manual_Images/Water_Occlusion_Preproccessed/Water_Occlusion"
 
 TARGET_SIZE = 224 # Standard ImageNet Input
 RESIZE_BASE = 256 # Standard Pre-processing (Resize to 256 then crop 224)
