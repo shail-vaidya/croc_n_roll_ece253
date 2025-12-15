@@ -49,7 +49,7 @@ Run the generation scripts to apply physics-based degradation models (Gamma/Nois
 
 ```
 python low_light/create_low_light_images.py
-python water_occlusion/create_water_occlusion_images.py
+python water_occlusion/create_water_occlusion_with_masks.py
 ```
 
 Outputs are saved to `Distorted_Images/`
@@ -66,7 +66,14 @@ python low_light/ablation_iagc.py
 
 ### Water Occlusion (Inpainting):
 ```
-python water_occlusion/ablation_inpainting.py
+python water_occlusion/ablation_inpainting_with_masks.py
+```
+
+Apply inpainting to the images-
+```
+python water_occlusion/apply_exemplar_inpainting.py
+python water_occlusion/apply_exemplar_inpainting_real_images.py
+
 ```
 
 Restored images are saved to `Processed_Images/`
