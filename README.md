@@ -49,6 +49,7 @@ Run the generation scripts to apply physics-based degradation models (Gamma/Nois
 
 `
 python low_light/create_low_light_images.py
+
 python water_occlusion/create_water_occlusion_images.py
 `
 
@@ -61,6 +62,7 @@ Run the ablation studies to test image restoration algorithms.
 
 `
 python low_light/ablation_clahe.py
+
 python low_light/ablation_iagc.py
 `
 
@@ -89,6 +91,7 @@ Run the final evaluation scripts to compare Baseline vs. DIP vs. Fine-Tuned Mode
 
 `
 python low_light/evaluate.py
+
 python water_occlusion/evaluate_water_occlusion_final.py
 `
 
