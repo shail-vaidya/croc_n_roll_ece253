@@ -17,9 +17,12 @@ This project quantifies the degradation of ResNet-50 performance under environme
 │   └── model_centric_low_light.ipynb # Fine-tuning workflow (Jupyter)
 │
 ├── water_occlusion/                  # Occlusion Track (Strategy 1 & 2)
-│   ├── create_water_occlusion_images.py
-│   ├── preprocess_images.py          # Heuristic mask generation
-│   ├── ablation_inpainting.py        # Compares Telea vs. Navier-Stokes
+│   ├── create_water_occlusion_with_masks.py
+│   ├── preprocess_images.py          # Preprocess Smartphone camera images
+│   ├── ablation_inpainting_with_masks.py        # Compares Telea vs. Navier-Stokes, run ablation study
+│   ├── apply_exemplar_inpainting.py        # Apply exemplar inpainting
+│   ├── apply_diffusion_inpainting.py        # Apply diffusion inpainting
+│   ├── apply_exemplar_inpainting_real_images.py        # Apply exemplar inpainting on phone-captured images
 │   ├── evaluate_water_occlusion_final.py # Main evaluation script for Occlusion
 │   └── model_centric_water_occlusion.ipynb # Fine-tuning workflow (Jupyter)
 │
@@ -73,6 +76,7 @@ Apply inpainting to the images-
 ```
 python water_occlusion/apply_exemplar_inpainting.py
 python water_occlusion/apply_exemplar_inpainting_real_images.py
+python water_occlusion/apply_diffusion_inpainting.py
 
 ```
 
