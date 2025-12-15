@@ -11,8 +11,8 @@ import pandas as pd # For nice table formatting
 # Paths
 CLEAN_DATA_DIR     = "./ImageNet_images"
 DISTORTED_DATA_DIR = "./Distorted_Images/Low_Light"
-CLAHE_DATA_DIR     = "./Processed_Images/Low_Light/Manual_CLAHE"
-IAGC_DATA_DIR      = "./Processed_Images/Low_Light/IAGC_LAB"
+CLAHE_DATA_DIR     = "./Processed_Images/Low_Light/CLAHE"
+IAGC_DATA_DIR      = "./Processed_Images/Low_Light/IAGC"
 
 # Model Path (Must match what you saved earlier)
 MODEL_PATH = "resnet50_clean_baseline.pth"
