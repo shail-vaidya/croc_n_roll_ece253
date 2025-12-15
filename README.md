@@ -46,6 +46,7 @@ This project quantifies the degradation of ResNet-50 performance under environme
 ## Usage Instructions
 ### Data Generation
 Run the generation scripts to apply physics-based degradation models (Gamma/Noise for Low-Light, Refraction for Occlusion) to the source images in Imagenet/.
+
 `
 python low_light/create_low_light_images.py
 python water_occlusion/create_water_occlusion_images.py
@@ -69,9 +70,9 @@ Restored images are saved to Processed_Images/
 ## Strategy 2: Model-Centric Evaluation (Fine-Tuning)
 Open the Jupyter Notebooks to perform Transfer Learning on the mixed datasets.
 
-**Low-Light:** low_light/model_centric_low_light.ipynb
+**Low-Light:** `low_light/model_centric_low_light.ipynb`
 
-**Occlusion:** water_occlusion/model_centric_water_occlusion.ipynb
+**Occlusion:** `water_occlusion/model_centric_water_occlusion.ipynb`
 
 These notebooks handle:
 
@@ -81,6 +82,7 @@ These notebooks handle:
 
 ## Final Evaluation
 Run the final evaluation scripts to compare Baseline vs. DIP vs. Fine-Tuned Model.
+
 `
 python low_light/evaluate.py
 python water_occlusion/evaluate_water_occlusion_final.py
