@@ -52,7 +52,7 @@ python low_light/create_low_light_images.py
 python water_occlusion/create_water_occlusion_images.py
 `
 
-Outputs are saved to Distorted_Images/
+Outputs are saved to `Distorted_Images/`
 
 ## Strategy 1: Data-Centric Evaluation (DIP)
 Run the ablation studies to test image restoration algorithms.
@@ -69,7 +69,7 @@ python low_light/ablation_iagc.py
 python water_occlusion/ablation_inpainting.py
 `
 
-Restored images are saved to Processed_Images/
+Restored images are saved to `Processed_Images/`
 
 ## Strategy 2: Model-Centric Evaluation (Fine-Tuning)
 Open the Jupyter Notebooks to perform Transfer Learning on the mixed datasets.
