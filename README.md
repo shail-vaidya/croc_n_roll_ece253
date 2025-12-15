@@ -7,6 +7,7 @@ This project quantifies the degradation of ResNet-50 performance under environme
 2.  **Model-Centric:** Fine-tuning the model using Domain Adaptation.
 
 ## Repository Structure
+```
 .
 ├── low_light/                        # Low-Light Track (Strategy 1 & 2)
 │   ├── create_low_light_images.py    # Generates synthetic low-light dataset
@@ -34,13 +35,13 @@ This project quantifies the degradation of ResNet-50 performance under environme
 ├── Final_Report.pdf
 ├── Project_Proposal.pdf
 └── README.md
-
+```
 ## Prerequisites
 
--Python 3.8+
--PyTorch (Torchvision)
--OpenCV (opencv-python)
--NumPy, Matplotlib
+- Python 3.8+
+- PyTorch (Torchvision)
+- OpenCV (opencv-python)
+- NumPy, Matplotlib
 
 ## Usage Instructions
 ### Data Generation
