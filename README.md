@@ -82,7 +82,7 @@ These notebooks handle:
 
 1. Loading the pre-trained ResNet-50 (Layers 1-4 Frozen).
 2. Training the classifier head on the mixed dataset.
-3. Saving the weights (e.g., resnet50_finetuned_water.pth).
+3. Saving the weights (e.g., `resnet50_finetuned_water.pth`).
 
 ## Final Evaluation
 Run the final evaluation scripts to compare Baseline vs. DIP vs. Fine-Tuned Model.
