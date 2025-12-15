@@ -47,11 +47,10 @@ This project quantifies the degradation of ResNet-50 performance under environme
 ### Data Generation
 Run the generation scripts to apply physics-based degradation models (Gamma/Noise for Low-Light, Refraction for Occlusion) to the source images in Imagenet/.
 
-`
+```
 python low_light/create_low_light_images.py
-
 python water_occlusion/create_water_occlusion_images.py
-`
+```
 
 Outputs are saved to `Distorted_Images/`
 
@@ -60,16 +59,15 @@ Run the ablation studies to test image restoration algorithms.
 
 ### Low-Light (CLAHE & IAGC):
 
-`
+```
 python low_light/ablation_clahe.py
-
 python low_light/ablation_iagc.py
-`
+```
 
 ### Water Occlusion (Inpainting):
-`
+```
 python water_occlusion/ablation_inpainting.py
-`
+```
 
 Restored images are saved to `Processed_Images/`
 
@@ -89,11 +87,10 @@ These notebooks handle:
 ## Final Evaluation
 Run the final evaluation scripts to compare Baseline vs. DIP vs. Fine-Tuned Model.
 
-`
+```
 python low_light/evaluate.py
-
 python water_occlusion/evaluate_water_occlusion_final.py
-`
+```
 
 ## Authors
 **Hariram Ramakrishnan** - Occlusion Track (Simulation, Inpainting, Data Collection)
