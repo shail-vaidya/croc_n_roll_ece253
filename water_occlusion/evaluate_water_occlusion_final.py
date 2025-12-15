@@ -148,7 +148,7 @@ tuned_model = load_resnet50(TUNED_MODEL_PATH)
 if tuned_model:
     # Synthetic Performance
     acc_tuned_syn = evaluate_model(tuned_model, distorted_loader, "Fine-Tuned on Synthetic (R^)")
-    results.append({"Strategy": "Model-Centric (FT)", "Dataset": "Distorted", "Model": "Fine-Tuned", "Accuracy": f"{acc_tuned_syn*100:.2f}%"})
+    results.append({"Strategy": "Model-Centric (FT)", "Dataset": "Syn Distorted", "Model": "Fine-Tuned", "Accuracy": f"{acc_tuned_syn*100:.2f}%"})
 
     # Real World Performance
     if real_loader:
