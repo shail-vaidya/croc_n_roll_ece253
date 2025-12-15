@@ -15,7 +15,7 @@ DISTORTED_DATA_DIR = "../Distorted_Images/Water_Occlusion"
 DIFFUSION_DATA_DIR = "../Processed_Images/Water/Diffusion_Telea"
 EXEMPLAR_DATA_DIR  = "../Processed_Images/Water/Exemplar_NS"
 # Real Data (Preprocessed)
-REAL_DATA_DIR      = "../Manual_Images/Water Occlusion_Preproccessed/Water_Occlusion"
+REAL_DATA_DIR      = "../Manual_Images/Water_Occlusion_Preproccessed/Water_Occlusion"
 
 # 2. Model Paths
 CLEAN_MODEL_PATH   = "../resnet50_clean_baseline.pth"
